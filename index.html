@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cryptocurrency Calculator</h1>
+    
+    <!-- Section for converting USD to Crypto -->
+    <div>
+        <label for="usdAmount">Enter USD Amount:</label>
+        <input type="number" id="usdAmount" placeholder="USD">
+        <button id="calculateCrypto">Calculate Crypto</button>
+    </div>
+
+    <!-- Results for Crypto -->
+    <div id="cryptoResults">
+        <p>Bitcoin (BTC): <span id="btcAmount">-</span></p>
+        <p>Ethereum (ETH): <span id="ethAmount">-</span></p>
+        <p>Avalanche (AVAX): <span id="avaxAmount">-</span></p>
+        <p>Litecoin (LTC): <span id="ltcAmount">-</span></p>
+    </div>
+
+    <!-- Section for converting Crypto to USD -->
+    <div>
+        <label for="btcAmountInput">Bitcoin (BTC):</label>
+        <input type="number" id="btcAmountInput" placeholder="BTC">
+        <label for="ethAmountInput">Ethereum (ETH):</label>
+        <input type="number" id="ethAmountInput" placeholder="ETH">
+        <label for="avaxAmountInput">Avalanche (AVAX):</label>
+        <input type="number" id="avaxAmountInput" placeholder="AVAX">
+        <label for="ltcAmountInput">Litecoin (LTC):</label>
+        <input type="number" id="ltcAmountInput" placeholder="LTC">
+        <button id="calculateUsd">Calculate USD</button>
+    </div>
+
+    <!-- Result for USD -->
+    <div id="usdResults">
+        <p>USD Equivalent: <span id="usdEquivalent">-</span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
