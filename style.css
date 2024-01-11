@@ -1,47 +1,89 @@
+/* style.css */
+main {
+    margin-bottom: 80px; /* Adjust this value as needed */
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    background-color: #f0f0f0;
+    text-align: center;
 }
 
-h1 {
-    margin-bottom: 20px;
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
 }
 
-div {
+footer {
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+}
+#puzzle-container {
+    margin: 20px;
+    padding: 10px;
+    background-color: #eaeaea;
+    border-radius: 8px;
+}
+
+#answer-input {
+    margin-top: 10px;
     margin-bottom: 10px;
-}
-input[type="number"] {
-    margin: 5px 0;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 5px;
 }
 
 button {
-    margin: 10px 0;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
+    padding: 5px 10px;
     background-color: #4CAF50;
     color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #45a049;
 }
-
-label {
-    display: block;
-    margin-top: 10px;
-}
-
-#results {
+#transaction-container, #history-container, #block-container {
     margin-top: 20px;
+    padding: 10px;
+    background-color: #eaeaea;
+    border-radius: 8px;
 }
+
+#transaction-container input, 
+#history-container input,
+#block-container input {
+    margin: 10px 0;
+    padding: 5px;
+    width: 50%; /* Adjust width as needed */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#transaction-container button, 
+#history-container button, 
+#block-container button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#transaction-container button:hover, 
+#history-container button:hover, 
+#block-container button:hover {
+    background-color: #45a049;
+}
+
+/* Optional: Add more specific styling here as needed */
+
+/* ...other existing styles... */

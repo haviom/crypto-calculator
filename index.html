@@ -3,45 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Calculator</title>
+    <title>Bitcoin Puzzle Challenge</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Cryptocurrency Calculator</h1>
-    
-    <!-- Section for converting USD to Crypto -->
-    <div>
-        <label for="usdAmount">Enter USD Amount:</label>
-        <input type="number" id="usdAmount" placeholder="USD">
-        <button id="calculateCrypto">Calculate Crypto</button>
-    </div>
 
-    <!-- Results for Crypto -->
-    <div id="cryptoResults">
-        <p>Bitcoin (BTC): <span id="btcAmount">-</span></p>
-        <p>Ethereum (ETH): <span id="ethAmount">-</span></p>
-        <p>Avalanche (AVAX): <span id="avaxAmount">-</span></p>
-        <p>Litecoin (LTC): <span id="ltcAmount">-</span></p>
-    </div>
+    <main style="display: flex; flex-direction: column;">
+        <header>
+            <h1>Bitcoin Puzzle Challenge</h1>
+            <p id="score">Score: 0</p>
+        </header>        
+        <div id="puzzle-container">
+            <h2>Bitcoin Trivia</h2>
+            <p id="question">What was the original block reward for Bitcoin mining?</p>
+            <input type="text" id="answer-input" placeholder="Enter your answer">
+            <button onclick="checkAnswer()">Submit Answer</button>
+            <p id="feedback"></p>
+        </div>
+        
+        <div id="mcq-container">
+            <h2>Bitcoin Multiple Choice Quiz</h2>
+            <p>Which year was Bitcoin created?</p>
+            <div>
+                <input type="radio" id="choice1" name="mcq" value="2008">
+                <label for="choice1">2008</label>
+            </div>
+            <div>
+                <input type="radio" id="choice2" name="mcq" value="2009">
+                <label for="choice2">2009</label>
+            </div>
+            <div>
+                <input type="radio" id="choice3" name="mcq" value="2010">
+                <label for="choice3">2010</label>
+            </div>
+            <button onclick="checkMCQAnswer()">Submit Answer</button>
+            <p id="mcq-feedback"></p>
+        </div>
+        <div id="transaction-container">
+            <h2>Bitcoin Transaction Puzzle</h2>
+            <p>You are sending 0.5 BTC with a network fee rate of 0.0001 BTC. What is the total transaction amount?</p>
+            <input type="text" id="transaction-input" placeholder="Enter total amount in BTC">
+            <button onclick="checkTransactionAnswer()">Submit Answer</button>
+            <p id="transaction-feedback"></p>
+        </div>
+        <div id="history-container">
+            <h2>Bitcoin History Quiz</h2>
+            <p>Who is the creator of Bitcoin?</p>
+            <input type="text" id="history-input" placeholder="Enter name">
+            <button onclick="checkHistoryAnswer()">Submit Answer</button>
+            <p id="history-feedback"></p>
+        </div>
+        <div id="block-container">
+            <h2>Block Explorer Challenge</h2>
+            <p>How many transactions were in Bitcoin block number 680000?</p>
+            <input type="number" id="block-input" placeholder="Enter number of transactions">
+            <button onclick="checkBlockAnswer()">Submit Answer</button>
+            <p id="block-feedback"></p>
+        </div>
+                        
 
-    <!-- Section for converting Crypto to USD -->
-    <div>
-        <label for="btcAmountInput">Bitcoin (BTC):</label>
-        <input type="number" id="btcAmountInput" placeholder="BTC">
-        <label for="ethAmountInput">Ethereum (ETH):</label>
-        <input type="number" id="ethAmountInput" placeholder="ETH">
-        <label for="avaxAmountInput">Avalanche (AVAX):</label>
-        <input type="number" id="avaxAmountInput" placeholder="AVAX">
-        <label for="ltcAmountInput">Litecoin (LTC):</label>
-        <input type="number" id="ltcAmountInput" placeholder="LTC">
-        <button id="calculateUsd">Calculate USD</button>
-    </div>
-
-    <!-- Result for USD -->
-    <div id="usdResults">
-        <p>USD Equivalent: <span id="usdEquivalent">-</span></p>
-    </div>
-
+    </main>
+    <footer>
+        <p>Created by [Your Name]</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

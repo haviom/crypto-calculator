@@ -1,58 +1,115 @@
-document.getElementById('calculateButton').addEventListener('click', function() {
-    var usdAmount = document.getElementById('usdAmount').value;
-    fetchCryptoPrices(usdAmount, displayCryptoResults);
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    // Game initialization logic here
 });
+let score = 0;
 
-document.getElementById('calculateUsdButton').addEventListener('click', function() {
-    fetchCryptoPrices(null, displayUsdResults);
-});
+function updateScore(isCorrect) {
+    const scoreElement = document.getElementById('score');
+    if (isCorrect) {
+        score += 10; // Points for correct answer
+    } else {
+        score -= 5; // Deduct points for incorrect answer
+    }
+    scoreElement.innerText = `Score: ${score}`;
+}
+function checkAnswer() {
+    const userAnswer = document.getElementById('answer-input').value;
+    const feedbackElement = document.getElementById('feedback');
+    let isCorrect = false;
 
-function fetchCryptoPrices(usdAmount, callback) {
-    console.log("fetchCryptoPrices called with USD amount:", usdAmount);
+    if (userAnswer.trim() === '50') {
+        feedbackElement.innerText = 'Correct! The original block reward was 50 bitcoins.';
+        feedbackElement.style.color = 'green';
+        isCorrect = true;
+    } else {
+        feedbackElement.innerText = 'Incorrect. Try again!';
+        feedbackElement.style.color = 'red';
+    }
 
-    var api_url = 'https://api.coingecko.com/api/v3/simple/price';
-    var ids = 'bitcoin,ethereum,avalanche-2,litecoin';
-    var vs_currencies = 'usd';
-    var url = `${api_url}?ids=${ids}&vs_currencies=${vs_currencies}`;
-
-    console.log("Fetching from URL:", url);
-
-    fetch(url)
-    .then(response => {
-        console.log("API Response:", response);
-        return response.json();
-    })
-    .then(data => {
-        console.log("Data received:", data);
-        callback(usdAmount, data);
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
+    updateScore(isCorrect);
 }
 
-function displayCryptoResults(usdAmount, data) {
-    var btcPrice = data.bitcoin.usd;
-    var ethPrice = data.ethereum.usd;
-    var avaxPrice = data['avalanche-2'].usd;
-    var ltcPrice = data.litecoin.usd;
+function checkMCQAnswer() {
+    const selected = document.querySelector('input[name="mcq"]:checked');
+    const mcqFeedback = document.getElementById('mcq-feedback');
 
-    document.getElementById('btcAmount').textContent = (usdAmount / btcPrice).toFixed(6);
-    document.getElementById('ethAmount').textContent = (usdAmount / ethPrice).toFixed(6);
-    document.getElementById('avaxAmount').textContent = (usdAmount / avaxPrice).toFixed(6);
-    document.getElementById('ltcAmount').textContent = (usdAmount / ltcPrice).toFixed(6);
+    if (selected && selected.value === '2009') {
+        mcqFeedback.innerText = 'Correct! Bitcoin was created in 2009.';
+        mcqFeedback.style.color = 'green';
+    } else {
+        mcqFeedback.innerText = 'Incorrect. Try again!';
+        mcqFeedback.style.color = 'red';
+    }
 }
 
-function displayUsdResults(_, data) {
-    var btcAmount = document.getElementById('btcAmountInput').value || 0;
-    var ethAmount = document.getElementById('ethAmountInput').value || 0;
-    var avaxAmount = document.getElementById('avaxAmountInput').value || 0;
-    var ltcAmount = document.getElementById('ltcAmountInput').value || 0;
+function checkCryptoAnswer() {
+    const cryptoInput = document.getElementById('crypto-input').value.toLowerCase();
+    const cryptoFeedback = document.getElementById('crypto-feedback');
+    let isCorrect = false;
 
-    var usdEquivalent = btcAmount * data.bitcoin.usd + 
-                        ethAmount * data.ethereum.usd + 
-                        avaxAmount * data['avalanche-2'].usd + 
-                        ltcAmount * data.litecoin.usd;
+    if (cryptoInput === 'ice') { // 'ice' is the decrypted word for the given binary sequence.
+        cryptoFeedback.innerText = 'Correct! You decrypted the message.';
+        cryptoFeedback.style.color = 'green';
+        isCorrect = true;
+    } else {
+        cryptoFeedback.innerText = 'Incorrect. Try again!';
+        cryptoFeedback.style.color = 'red';
+    }
 
-    document.getElementById('usdEquivalent').textContent = usdEquivalent.toFixed(2);
+    updateScore(isCorrect);
 }
+function checkTransactionAnswer() {
+    const transactionInput = parseFloat(document.getElementById('transaction-input').value);
+    const transactionFeedback = document.getElementById('transaction-feedback');
+    let isCorrect = false;
+
+    // Correct answer is sending amount plus fee rate
+    if (transactionInput === 0.5001) {
+        transactionFeedback.innerText = 'Correct! The total transaction amount is 0.5001 BTC.';
+        transactionFeedback.style.color = 'green';
+        isCorrect = true;
+    } else {
+        transactionFeedback.innerText = 'Incorrect. Try again!';
+        transactionFeedback.style.color = 'red';
+    }
+
+    updateScore(isCorrect);
+}
+
+
+function checkHistoryAnswer() {
+    const historyInput = document.getElementById('history-input').value.toLowerCase();
+    const historyFeedback = document.getElementById('history-feedback');
+    let isCorrect = false;
+
+    if (historyInput === 'satoshi nakamoto') {
+        historyFeedback.innerText = 'Correct! Satoshi Nakamoto is the creator of Bitcoin.';
+        historyFeedback.style.color = 'green';
+        isCorrect = true;
+    } else {
+        historyFeedback.innerText = 'Incorrect. Try again!';
+        historyFeedback.style.color = 'red';
+    }
+
+    updateScore(isCorrect);
+}
+function checkBlockAnswer() {
+    const blockInput = parseInt(document.getElementById('block-input').value, 10);
+    const blockFeedback = document.getElementById('block-feedback');
+    let isCorrect = false;
+
+    // Assuming 680000 had a specific number of transactions, for example, 2500
+    if (blockInput === 2,875) {
+        blockFeedback.innerText = 'Correct! Block 680000 had 2,875 transactions.';
+        blockFeedback.style.color = 'green';
+        isCorrect = true;
+    } else {
+        blockFeedback.innerText = 'Incorrect. The correct answer is 2500.';
+        blockFeedback.style.color = 'red';
+    }
+
+    updateScore(isCorrect);
+}
+
+
